@@ -1,6 +1,6 @@
-08:29:37 **** Incremental Build of configuration Debug for project spi_test ****
+16:59:14 **** Incremental Build of configuration Debug for project spi_test ****
 make all 
 make: Nothing to be done for `all'.
 
-08:29:37 Build Finished (took 78ms)
+16:59:14 Build Finished (took 55ms)
 

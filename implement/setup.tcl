@@ -19,6 +19,8 @@ update_ip_catalog
 # Recreate the Block Diagram of the processor system.
 source ../source/system.tcl
 generate_target {synthesis implementation} [get_files ./proj.srcs/sources_1/bd/system/system.bd]
+write_hwdef -force  -file ../sdk/top.hdf
+
 
 # add the max_rx_if_fifo
 #read_ip ../source/max_if/ip/max_rx_fifo.xci
