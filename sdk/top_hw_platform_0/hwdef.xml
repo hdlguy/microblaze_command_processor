@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Project Version="1" Minor="0">
+	<BUILD_NUMBER Name="1071353"/>
+	<FULL_BUILD Name="SW Build 1071353 on Tue Nov 18 18:29:27 MST 2014"/>
+	<MODE Name="Pre-Synthesis"/>
+	<SYSTEMINFO BOARD="" ARCH="artix7" PACKAGE="ftg256" DEVICE="7a50t" SPEED="-1" LUT="" FF="" BRAM="" DSP=""/>
+	<HIERARCHY Name="system_i"/>
+	<File Type="HW_HANDOFF" Name="system.hwh" ModTime="1424975010"/>
+	<File Type="BD_TCL" Name="system_bd.tcl" ModTime="1424975010"/>
+</Project>
+
