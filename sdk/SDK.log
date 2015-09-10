@@ -1,0 +1,43 @@
+17:11:01 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+17:11:02 INFO  : XSDB server has started successfully.
+17:12:22 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+17:12:23 INFO  : XSDB server has started successfully.
+17:13:20 INFO  : Project 'top_hw_platform_0' created. You can now create BSPs and application projects targeting this hardware platform.
+17:13:26 INFO  : BSP Project P/standalone_bsp_0 has been successfully migrated.
+17:15:51 INFO  : Processor reset is completed for microblaze_0
+17:15:52 ERROR : Unexpected error while launching program.
+java.lang.RuntimeException: Error creating session
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.debugApplication(XilinxAppLaunchConfigurationDelegate.java:778)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:298)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+17:16:08 INFO  : Processor reset is completed for microblaze_0
+17:16:10 ERROR : Unexpected error while launching program.
+java.lang.RuntimeException: Error creating session
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.debugApplication(XilinxAppLaunchConfigurationDelegate.java:778)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:298)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+17:17:07 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:17:07 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+17:17:08 INFO  : FPGA configured successfully with bitstream "/home/pedro/proj/microblaze_command_processor/implement/results/top.bit"
+17:17:17 INFO  : Processor reset is completed for microblaze_0
+17:17:18 ERROR : Unexpected error while launching program.
+java.lang.RuntimeException: Error creating session
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.debugApplication(XilinxAppLaunchConfigurationDelegate.java:778)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:298)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+17:17:50 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 

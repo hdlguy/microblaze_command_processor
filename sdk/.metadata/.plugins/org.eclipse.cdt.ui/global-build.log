@@ -1,0 +1,12 @@
+17:15:11 **** Incremental Build of configuration Debug for project hello1 ****
+make all 
+make: Nothing to be done for `all'.
+17:15:49 **** Incremental Build of configuration Debug for project hello1 ****
+make all 
+make: Nothing to be done for `all'.
+17:16:08 **** Incremental Build of configuration Debug for project hello1 ****
+make all 
+make: Nothing to be done for `all'.
+17:17:17 **** Incremental Build of configuration Debug for project hello1 ****
+make all 
+make: Nothing to be done for `all'.
