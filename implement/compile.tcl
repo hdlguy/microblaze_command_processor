@@ -10,7 +10,7 @@ write_checkpoint -force $outputDir/post_synth.dcp
 #reportCriticalPaths post_synth_critpath_report.csv
 
 ## add ila logic analyzer.
-#source add_ila.tcl
+source add_ila.tcl
 
 opt_design
 #reportCriticalPaths post_opt_critpath_report.csv

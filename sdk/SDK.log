@@ -334,3 +334,30 @@ Caused by: java.io.IOException: Communication channel is closed by remote peer
 11:01:45 INFO  : XSDB server has started successfully.
 11:03:54 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
 11:03:55 INFO  : XSDB server has started successfully.
+11:21:56 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+11:21:57 INFO  : XSDB server has started successfully.
+11:41:05 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:41:05 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+11:41:05 INFO  : 'fpga -state' command is executed.
+11:41:05 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+11:41:06 INFO  : Context for processor 'microblaze_0' is selected.
+11:41:06 INFO  : Processor reset is completed for 'microblaze_0'.
+11:41:06 INFO  : Context for processor 'microblaze_0' is selected.
+11:41:07 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/spi_test/Debug/spi_test.elf' is downloaded to processor 'microblaze_0'.
+11:41:07 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/spi_test/Debug/spi_test.elf
+----------------End of Script----------------
+
+11:41:07 INFO  : Context for processor 'microblaze_0' is selected.
+11:41:07 INFO  : 'con' command is executed.
+11:41:07 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+11:43:03 INFO  : Disconnected from the channel tcfchan#1.
+11:43:04 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 

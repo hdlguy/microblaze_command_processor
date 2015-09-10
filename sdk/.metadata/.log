@@ -3047,3 +3047,56 @@ Binding(F4,
 		,,true),null),
 	org.eclipse.ui.defaultAcceleratorConfiguration,
 	org.eclipse.ui.contexts.window,,,system)
+!SESSION 2015-09-10 11:21:53.589 -----------------------------------------------
+eclipse.buildId=2015.2
+java.version=1.8.0_25
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.jface 2 0 2015-09-10 11:43:03.868
+!MESSAGE Keybinding conflicts occurred.  They may interfere with normal accelerator operation.
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-09-10 11:43:03.868
+!MESSAGE A conflict occurred for HOME:
+Binding(HOME,
+	ParameterizedCommand(Command(org.eclipse.cdt.dsf.debug.ui.disassembly.commands.gotoPC,Go to Program Counter,
+		Navigate to current program counter,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@54902273,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.dsf.debug.ui.disassembly.context,,,system)
+Binding(HOME,
+	ParameterizedCommand(Command(org.eclipse.ui.edit.text.goto.lineStart,Line Start,
+		Go to the start of the line of text,
+		Category(org.eclipse.ui.category.textEditor,Text Editing,Text Editing Commands,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@40052266,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.textEditorScope,,,system)
+!SUBENTRY 1 org.eclipse.jface 2 0 2015-09-10 11:43:03.868
+!MESSAGE A conflict occurred for CTRL+G:
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.dsf.debug.ui.disassembly.commands.gotoAddress,Go to Address...,
+		Navigate to address,
+		Category(org.eclipse.debug.ui.category.run,Run/Debug,Run/Debug command category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@5a7810e1,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.dsf.debug.ui.disassembly.context,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.cdt.ui.search.finddecl,Declaration,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.cdt.ui.category.source,C/C++ Source,C/C++ Source Actions,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@29dfc14a,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.cdt.ui.cEditorScope,,,system)
+Binding(CTRL+G,
+	ParameterizedCommand(Command(org.eclipse.jdt.ui.edit.text.java.search.declarations.in.workspace,Declaration in Workspace,
+		Search for declarations of the selected element in the workspace,
+		Category(org.eclipse.search.ui.category.search,Search,Search command category,true),
+		org.eclipse.ui.internal.WorkbenchHandlerServiceHandler@7c09fdb8,
+		,,true),null),
+	org.eclipse.ui.defaultAcceleratorConfiguration,
+	org.eclipse.ui.contexts.window,,,system)
