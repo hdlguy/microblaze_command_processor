@@ -68,18 +68,18 @@ int main(void)
 
 			// for now, just print something to indicate that the command is parsed.
 			if (cmd==reg_wr) {
-				sprintf(output_string, "command = reg_wr, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
+				sprintf(output_string, "command = reg_wr, args = 0x%x 0x%x 0x%x 0x%x\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
 			} else if (cmd==reg_rd) {
-				sprintf(output_string, "command = reg_rd, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
+				sprintf(output_string, "command = reg_rd, args = 0x%x 0x%x 0x%x 0x%x\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
 			} else if (cmd==spi_wr) {
-				sprintf(output_string, "command = spi_wr, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
+				sprintf(output_string, "command = spi_wr, args = 0x%x 0x%x 0x%x 0x%x\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
 			} else if (cmd==spi_rd) {
-				sprintf(output_string, "command = spi_rd, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
+				sprintf(output_string, "command = spi_rd, args = 0x%x 0x%x 0x%x 0x%x\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
 			} else if (cmd==led_wr) {
-				sprintf(output_string, "command = led_wr, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
+				sprintf(output_string, "command = led_wr, args = 0x%x 0x%x 0x%x 0x%x\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
 				*gpio_ptr = cmd_args[0];
 			} else {
-				sprintf(output_string, "command = nop, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
+				sprintf(output_string, "command = nop, args = 0x%x 0x%x 0x%x 0x%x\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
 			}
 			print(output_string);
 		}

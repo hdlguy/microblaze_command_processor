@@ -1,143 +1,206 @@
-11:04:12 **** Incremental Build of configuration Debug for project spi_test ****
+12:17:58 **** Clean-only build of configuration Debug for project command_proc ****
+make clean 
+rm -rf  ./src/command_proc.o ./src/platform.o  ./src/command_proc.d ./src/platform.d  command_proc.elf.size  command_proc.elf
+ 
+12:17:58 **** Clean-only build of configuration Release for project command_proc ****
+make clean 
+rm -rf  ./src/command_proc.o ./src/platform.o  ./src/command_proc.d ./src/platform.d  command_proc.elf.size  command_proc.elf
+ 
+12:17:58 **** Build of configuration Debug for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building file: ../src/platform.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 125020	   1596	   2392	 129008	  1f7f0	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+12:17:58 **** Clean-only build of configuration Release for project command_proc ****
+make clean 
+rm -rf  ./src/command_proc.o ./src/platform.o  ./src/command_proc.d ./src/platform.d  command_proc.elf.size  command_proc.elf
+ 
+12:17:58 **** Build of configuration Release for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O2 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building file: ../src/platform.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O2 -c -fmessage-length=0 -MT"src/platform.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 124476	   1596	   2392	 128464	  1f5d0	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+14:49:00 **** Clean-only build of project standalone_bsp_0 ****
+make -k clean 
+rm -f microblaze_0/lib/libxil.a
+14:49:00 **** Clean-only build of configuration Debug for project command_proc ****
+make clean 
+rm -rf  ./src/command_proc.o ./src/platform.o  ./src/command_proc.d ./src/platform.d  command_proc.elf.size  command_proc.elf
+ 
+14:49:00 **** Clean-only build of configuration Debug for project spi_test ****
+make clean 
+rm -rf  ./src/platform.o ./src/spi_test.o  ./src/platform.d ./src/spi_test.d  spi_test.elf.size  spi_test.elf
+ 
+14:49:00 **** Build of project standalone_bsp_0 ****
+make -k all 
+Running Make include in microblaze_0/libsrc/bram_v4_0/src
+make -C microblaze_0/libsrc/bram_v4_0/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Running Make include in microblaze_0/libsrc/cpu_v2_3/src
+make -C microblaze_0/libsrc/cpu_v2_3/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Running Make include in microblaze_0/libsrc/gpio_v4_0/src
+make -C microblaze_0/libsrc/gpio_v4_0/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Running Make include in microblaze_0/libsrc/spi_v4_1/src
+make -C microblaze_0/libsrc/spi_v4_1/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Running Make include in microblaze_0/libsrc/standalone_v5_1/src
+make -C microblaze_0/libsrc/standalone_v5_1/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Running Make include in microblaze_0/libsrc/uartlite_v3_0/src
+make -C microblaze_0/libsrc/uartlite_v3_0/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Running Make libs in microblaze_0/libsrc/bram_v4_0/src
+make -C microblaze_0/libsrc/bram_v4_0/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Compiling bram
+mb-ar: creating ../../../lib/libxil.a
+Running Make libs in microblaze_0/libsrc/cpu_v2_3/src
+make -C microblaze_0/libsrc/cpu_v2_3/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Compiling cpu
+Running Make libs in microblaze_0/libsrc/gpio_v4_0/src
+make -C microblaze_0/libsrc/gpio_v4_0/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Compiling gpio
+Running Make libs in microblaze_0/libsrc/spi_v4_1/src
+make -C microblaze_0/libsrc/spi_v4_1/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Compiling spi
+Running Make libs in microblaze_0/libsrc/standalone_v5_1/src
+make -C microblaze_0/libsrc/standalone_v5_1/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Compiling standalone
+Running Make libs in microblaze_0/libsrc/uartlite_v3_0/src
+make -C microblaze_0/libsrc/uartlite_v3_0/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
+Compiling uartlite
+Finished building libraries
+14:49:01 **** Build of configuration Debug for project spi_test ****
+make all 
+Building file: ../src/platform.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building file: ../src/spi_test.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
+Finished building: ../src/spi_test.c
+ 
+Building target: spi_test.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: spi_test.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size spi_test.elf  |tee "spi_test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  81344	   1588	   2180	  85112	  14c78	spi_test.elf
+Finished building: spi_test.elf.size
+ 
+14:49:02 **** Clean-only build of configuration Debug for project command_proc ****
+make clean 
+rm -rf  ./src/command_proc.o ./src/platform.o  ./src/command_proc.d ./src/platform.d  command_proc.elf.size  command_proc.elf
+ 
+14:49:02 **** Build of configuration Debug for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building file: ../src/platform.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/platform.d" -MT"src/platform.d" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 125020	   1596	   2392	 129008	  1f7f0	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+14:49:06 **** Incremental Build of configuration Debug for project spi_test ****
+make all 
+make: Nothing to be done for `all'.
+15:00:14 **** Incremental Build of configuration Debug for project spi_test ****
+make all 
+make: Nothing to be done for `all'.
+15:03:03 **** Auto Build of configuration Debug for project spi_test ****
 make all 
 Building file: ../src/spi_test.c
 Invoking: MicroBlaze gcc compiler
 mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
 ../src/spi_test.c: In function 'main':
-../src/spi_test.c:27:12: error: 'XPAR_AXI_PERIPHS_REGFILEX16_V1_0_0_BASEADDR' undeclared (first use in this function)
-  reg_ptr = XPAR_AXI_PERIPHS_REGFILEX16_V1_0_0_BASEADDR+0x04*6;
-            ^
-../src/spi_test.c:27:12: note: each undeclared identifier is reported only once for each function it appears in
-../src/spi_test.c: In function 'spi_scan':
-../src/spi_test.c:89:24: error: 'XPAR_SPI_2_BASEADDR' undeclared (first use in this function)
-   case 2 : BaseAddress=XPAR_SPI_2_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
-../src/spi_test.c:90:24: error: 'XPAR_SPI_3_BASEADDR' undeclared (first use in this function)
-   case 3 : BaseAddress=XPAR_SPI_3_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
-../src/spi_test.c:91:24: error: 'XPAR_SPI_4_BASEADDR' undeclared (first use in this function)
-   case 4 : BaseAddress=XPAR_SPI_4_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
+../src/spi_test.c:22:95: error: subscripted value is neither array nor pointer nor vector
+    sprintf(out_string,"spi(%d), rx_data(%d) = %4x\r\n", (int)j, (int)i, (unsigned int)spi_data[j][i]); print(out_string);
+                                                                                               ^
+../src/spi_test.c:14:6: warning: variable 'spi_data' set but not used [-Wunused-but-set-variable]
+  u32 spi_data;
+      ^
 make: *** [src/spi_test.o] Error 1
-11:05:23 **** Auto Build of configuration Debug for project spi_test ****
+15:03:29 **** Auto Build of configuration Debug for project spi_test ****
 make all 
 Building file: ../src/spi_test.c
 Invoking: MicroBlaze gcc compiler
 mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
 ../src/spi_test.c: In function 'main':
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
-       ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c: In function 'spi_scan':
-../src/spi_test.c:89:24: error: 'XPAR_SPI_2_BASEADDR' undeclared (first use in this function)
-   case 2 : BaseAddress=XPAR_SPI_2_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
-../src/spi_test.c:89:24: note: each undeclared identifier is reported only once for each function it appears in
-../src/spi_test.c:90:24: error: 'XPAR_SPI_3_BASEADDR' undeclared (first use in this function)
-   case 3 : BaseAddress=XPAR_SPI_3_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
-../src/spi_test.c:91:24: error: 'XPAR_SPI_4_BASEADDR' undeclared (first use in this function)
-   case 4 : BaseAddress=XPAR_SPI_4_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
+../src/spi_test.c:22:95: error: subscripted value is neither array nor pointer nor vector
+    sprintf(out_string,"spi(%d), rx_data(%d) = %4x\r\n", (int)j, (int)i, (unsigned int)spi_data[j][i]); print(out_string);
+                                                                                               ^
+../src/spi_test.c:14:6: warning: variable 'spi_data' set but not used [-Wunused-but-set-variable]
+  u32 spi_data;
+      ^
 make: *** [src/spi_test.o] Error 1
-11:05:56 **** Auto Build of configuration Debug for project spi_test ****
+15:03:40 **** Auto Build of configuration Debug for project spi_test ****
 make all 
 Building file: ../src/spi_test.c
 Invoking: MicroBlaze gcc compiler
 mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
 ../src/spi_test.c: In function 'main':
-../src/spi_test.c:15:6: warning: unused variable 'rf_adc_data' [-Wunused-variable]
-  u32 rf_adc_data[4];
+../src/spi_test.c:14:6: warning: variable 'spi_data' set but not used [-Wunused-but-set-variable]
+  u32 spi_data;
       ^
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
+../src/spi_test.c:13:9: warning: unused variable 'j' [-Wunused-variable]
+  u32 i, j;
+         ^
+../src/spi_test.c:13:6: warning: unused variable 'i' [-Wunused-variable]
+  u32 i, j;
+      ^
+../src/spi_test.c:11:7: warning: unused variable 'out_string' [-Wunused-variable]
+  char out_string[100];
        ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c:13:21: warning: unused variable 'rfadc_b' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                     ^
-../src/spi_test.c:13:12: warning: unused variable 'rfadc_a' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-            ^
-../src/spi_test.c: In function 'spi_scan':
-../src/spi_test.c:89:24: error: 'XPAR_SPI_2_BASEADDR' undeclared (first use in this function)
-   case 2 : BaseAddress=XPAR_SPI_2_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
-../src/spi_test.c:89:24: note: each undeclared identifier is reported only once for each function it appears in
-../src/spi_test.c:90:24: error: 'XPAR_SPI_3_BASEADDR' undeclared (first use in this function)
-   case 3 : BaseAddress=XPAR_SPI_3_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
-../src/spi_test.c:91:24: error: 'XPAR_SPI_4_BASEADDR' undeclared (first use in this function)
-   case 4 : BaseAddress=XPAR_SPI_4_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-                        ^
-make: *** [src/spi_test.o] Error 1
-11:25:21 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-../src/spi_test.c: In function 'main':
-../src/spi_test.c:15:6: warning: unused variable 'rf_adc_data' [-Wunused-variable]
-  u32 rf_adc_data[4];
-      ^
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
-       ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c:13:21: warning: unused variable 'rfadc_b' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                     ^
-../src/spi_test.c:13:12: warning: unused variable 'rfadc_a' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-            ^
-../src/spi_test.c: In function 'spi_scan':
-../src/spi_test.c:91:3: error: duplicate case value
-   case 3 : BaseAddress=XPAR_SPI_1_BASEADDR; SS_Vector=0x000000fd; cpol=0; cpha=0; break;
-   ^
-../src/spi_test.c:90:3: error: previously used here
-   case 3 : BaseAddress=XPAR_SPI_1_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-   ^
-../src/spi_test.c:92:3: error: duplicate case value
-   case 3 : BaseAddress=XPAR_SPI_1_BASEADDR; SS_Vector=0x000000fb; cpol=0; cpha=0; break;
-   ^
-../src/spi_test.c:90:3: error: previously used here
-   case 3 : BaseAddress=XPAR_SPI_1_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-   ^
-../src/spi_test.c:93:3: error: duplicate case value
-   case 3 : BaseAddress=XPAR_SPI_1_BASEADDR; SS_Vector=0x000000f7; cpol=0; cpha=0; break;
-   ^
-../src/spi_test.c:90:3: error: previously used here
-   case 3 : BaseAddress=XPAR_SPI_1_BASEADDR; SS_Vector=0x000000fe; cpol=0; cpha=0; break;
-   ^
-make: *** [src/spi_test.o] Error 1
-11:25:40 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-../src/spi_test.c: In function 'main':
-../src/spi_test.c:15:6: warning: unused variable 'rf_adc_data' [-Wunused-variable]
-  u32 rf_adc_data[4];
-      ^
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
-       ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c:13:21: warning: unused variable 'rfadc_b' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                     ^
-../src/spi_test.c:13:12: warning: unused variable 'rfadc_a' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-            ^
 Finished building: ../src/spi_test.c
  
 Building target: spi_test.elf
@@ -148,257 +211,9 @@ Finished building target: spi_test.elf
 Invoking: MicroBlaze Print Size
 mb-size spi_test.elf  |tee "spi_test.elf.size"
    text	   data	    bss	    dec	    hex	filename
-  81572	   1588	   2184	  85344	  14d60	spi_test.elf
+   3808	    288	   2096	   6192	   1830	spi_test.elf
 Finished building: spi_test.elf.size
  
-11:26:39 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-../src/spi_test.c: In function 'main':
-../src/spi_test.c:15:6: warning: unused variable 'rf_adc_data' [-Wunused-variable]
-  u32 rf_adc_data[4];
-      ^
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
-       ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c:13:21: warning: unused variable 'rfadc_b' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                     ^
-../src/spi_test.c:13:12: warning: unused variable 'rfadc_a' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-            ^
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81572	   1588	   2184	  85344	  14d60	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:28:50 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-../src/spi_test.c: In function 'main':
-../src/spi_test.c:15:6: warning: unused variable 'rf_adc_data' [-Wunused-variable]
-  u32 rf_adc_data[4];
-      ^
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
-       ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c:13:21: warning: unused variable 'rfadc_b' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                     ^
-../src/spi_test.c:13:12: warning: unused variable 'rfadc_a' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-            ^
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81572	   1588	   2184	  85344	  14d60	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:29:47 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-../src/spi_test.c: In function 'main':
-../src/spi_test.c:15:6: warning: unused variable 'rf_adc_data' [-Wunused-variable]
-  u32 rf_adc_data[4];
-      ^
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
-       ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c:13:21: warning: unused variable 'rfadc_b' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                     ^
-../src/spi_test.c:13:12: warning: unused variable 'rfadc_a' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-            ^
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81572	   1588	   2184	  85344	  14d60	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:30:01 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-../src/spi_test.c: In function 'main':
-../src/spi_test.c:15:6: warning: unused variable 'rf_adc_data' [-Wunused-variable]
-  u32 rf_adc_data[4];
-      ^
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
-       ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c:13:21: warning: unused variable 'rfadc_b' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                     ^
-../src/spi_test.c:13:12: warning: unused variable 'rfadc_a' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-            ^
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81476	   1588	   2184	  85248	  14d00	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:30:08 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-../src/spi_test.c: In function 'main':
-../src/spi_test.c:17:6: warning: unused variable 'flash_id' [-Wunused-variable]
-  u32 flash_id;
-      ^
-../src/spi_test.c:15:6: warning: unused variable 'rf_adc_data' [-Wunused-variable]
-  u32 rf_adc_data[4];
-      ^
-../src/spi_test.c:14:7: warning: unused variable 'reg_ptr' [-Wunused-variable]
-  u32 *reg_ptr;
-       ^
-../src/spi_test.c:13:30: warning: unused variable 'reg6' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                              ^
-../src/spi_test.c:13:21: warning: unused variable 'rfadc_b' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-                     ^
-../src/spi_test.c:13:12: warning: unused variable 'rfadc_a' [-Wunused-variable]
-  u32 i, j, rfadc_a, rfadc_b, reg6;
-            ^
-../src/spi_test.c:12:6: warning: unused variable 'rx_data' [-Wunused-variable]
-  u32 rx_data;
-      ^
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81344	   1588	   2180	  85112	  14c78	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:31:28 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81344	   1588	   2180	  85112	  14c78	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:32:11 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81344	   1588	   2180	  85112	  14c78	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:32:28 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81344	   1588	   2180	  85112	  14c78	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:39:34 **** Auto Build of configuration Debug for project spi_test ****
-make all 
-Building file: ../src/spi_test.c
-Invoking: MicroBlaze gcc compiler
-mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
-Finished building: ../src/spi_test.c
- 
-Building target: spi_test.elf
-Invoking: MicroBlaze gcc linker
-mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
-Finished building target: spi_test.elf
- 
-Invoking: MicroBlaze Print Size
-mb-size spi_test.elf  |tee "spi_test.elf.size"
-   text	   data	    bss	    dec	    hex	filename
-  81344	   1588	   2180	  85112	  14c78	spi_test.elf
-Finished building: spi_test.elf.size
- 
-11:41:03 **** Incremental Build of configuration Debug for project spi_test ****
+15:03:44 **** Incremental Build of configuration Debug for project spi_test ****
 make all 
 make: Nothing to be done for `all'.

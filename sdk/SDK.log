@@ -361,3 +361,147 @@ con
 
 11:43:03 INFO  : Disconnected from the channel tcfchan#1.
 11:43:04 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+11:55:39 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+11:55:39 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+11:55:40 INFO  : XSDB server has started successfully.
+11:55:40 INFO  : XSDB server has started successfully.
+11:55:47 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1441907414000,  Project:1441894178000
+11:55:47 INFO  : Project top_hw_platform_0's source hardware specification located at /home/pedro/proj/microblaze_command_processor/sdk/top.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+11:55:59 INFO  : Copied contents of /home/pedro/proj/microblaze_command_processor/sdk/top.hdf into /top_hw_platform_0/system.hdf.
+11:55:59 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+11:55:59 INFO  : 
+11:56:00 INFO  : Updating hardware inferred compiler options for command_proc.
+11:56:01 INFO  : Updating hardware inferred compiler options for spi_test.
+11:56:01 INFO  : Clearing existing target manager status.
+11:59:05 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+12:11:52 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+12:11:53 INFO  : XSDB server has started successfully.
+12:11:57 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1441907964000,  Project:1441907414000
+12:11:57 INFO  : Project top_hw_platform_0's source hardware specification located at /home/pedro/proj/microblaze_command_processor/sdk/top.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+12:11:59 INFO  : Copied contents of /home/pedro/proj/microblaze_command_processor/sdk/top.hdf into /top_hw_platform_0/system.hdf.
+12:12:00 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+12:12:00 INFO  : 
+12:12:01 INFO  : Updating hardware inferred compiler options for command_proc.
+12:12:02 INFO  : Updating hardware inferred compiler options for spi_test.
+12:12:02 INFO  : Clearing existing target manager status.
+12:12:03 INFO  : Closing and re-opening the MSS file of ther project standalone_bsp_0
+12:12:03 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+12:12:05 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+12:14:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:14:15 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+12:14:15 INFO  : 'fpga -state' command is executed.
+12:14:15 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+12:14:15 INFO  : Context for processor 'microblaze_0' is selected.
+12:14:15 INFO  : Processor reset is completed for 'microblaze_0'.
+12:14:16 INFO  : Context for processor 'microblaze_0' is selected.
+12:14:17 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/command_proc/Debug/command_proc.elf' is downloaded to processor 'microblaze_0'.
+12:14:17 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/command_proc/Debug/command_proc.elf
+----------------End of Script----------------
+
+12:14:17 INFO  : Context for processor 'microblaze_0' is selected.
+12:14:17 INFO  : 'con' command is executed.
+12:14:17 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+12:15:52 INFO  : Disconnected from the channel tcfchan#1.
+12:15:53 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+12:16:47 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+12:16:47 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+12:16:48 INFO  : XSDB server has started successfully.
+12:16:48 INFO  : XSDB server has started successfully.
+14:48:48 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+14:48:49 INFO  : XSDB server has started successfully.
+14:48:54 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1441909124000,  Project:1441907964000
+14:48:54 INFO  : Project top_hw_platform_0's source hardware specification located at /home/pedro/proj/microblaze_command_processor/sdk/top.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+14:48:56 INFO  : Copied contents of /home/pedro/proj/microblaze_command_processor/sdk/top.hdf into /top_hw_platform_0/system.hdf.
+14:48:56 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+14:48:57 INFO  : 
+14:48:58 INFO  : Updating hardware inferred compiler options for command_proc.
+14:48:58 INFO  : Updating hardware inferred compiler options for spi_test.
+14:48:58 INFO  : Clearing existing target manager status.
+14:49:00 INFO  : Closing and re-opening the MSS file of ther project standalone_bsp_0
+14:49:00 INFO  : Workspace synchronized with the new hardware specification file. Cleaning dependent projects...
+14:49:00 WARN  : Linker script will not be updated automatically. Users need to update it manually.
+14:49:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:49:06 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+14:49:06 INFO  : 'fpga -state' command is executed.
+14:49:06 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:49:07 INFO  : Context for processor 'microblaze_0' is selected.
+14:49:07 INFO  : Processor reset is completed for 'microblaze_0'.
+14:49:07 INFO  : Context for processor 'microblaze_0' is selected.
+14:49:08 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/spi_test/Debug/spi_test.elf' is downloaded to processor 'microblaze_0'.
+14:49:08 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/spi_test/Debug/spi_test.elf
+----------------End of Script----------------
+
+14:49:08 INFO  : Context for processor 'microblaze_0' is selected.
+14:49:08 INFO  : 'con' command is executed.
+14:49:08 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+15:00:16 INFO  : Disconnected from the channel tcfchan#1.
+15:00:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:00:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+15:00:17 INFO  : 'fpga -state' command is executed.
+15:00:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:00:17 INFO  : Context for processor 'microblaze_0' is selected.
+15:00:17 INFO  : Processor reset is completed for 'microblaze_0'.
+15:00:18 INFO  : Context for processor 'microblaze_0' is selected.
+15:00:18 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/spi_test/Debug/spi_test.elf' is downloaded to processor 'microblaze_0'.
+15:00:18 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/spi_test/Debug/spi_test.elf
+----------------End of Script----------------
+
+15:00:18 INFO  : Context for processor 'microblaze_0' is selected.
+15:00:18 INFO  : 'con' command is executed.
+15:00:18 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+15:03:46 INFO  : Disconnected from the channel tcfchan#2.
+15:03:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:03:46 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+15:03:46 INFO  : 'fpga -state' command is executed.
+15:03:46 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:03:47 INFO  : Context for processor 'microblaze_0' is selected.
+15:03:47 INFO  : Processor reset is completed for 'microblaze_0'.
+15:03:47 INFO  : Context for processor 'microblaze_0' is selected.
+15:03:47 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/spi_test/Debug/spi_test.elf' is downloaded to processor 'microblaze_0'.
+15:03:47 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/spi_test/Debug/spi_test.elf
+----------------End of Script----------------
+
+15:03:47 INFO  : Context for processor 'microblaze_0' is selected.
+15:03:47 INFO  : 'con' command is executed.
+15:03:47 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+15:05:23 INFO  : Disconnected from the channel tcfchan#3.
+15:05:23 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 

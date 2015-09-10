@@ -11,21 +11,17 @@ int main(void)
 	char out_string[100];
 	//u32 rx_data;
 	u32 i, j;
-	u32 spi_data[4][8];
+	u32 spi_data;
 	//u32 flash_id;
 
 	// some spi scans
-	for(j=0; j<4; j++){
-		for(i=2; i<8; i++){
-			spi_data[j][i] = spi_scan(j, i<<8);
-		}
-	}
+	spi_data = spi_scan(0, 1);
 
-	for(j=0; j<4; j++){
-		for(i=2; i<8; i++){
-			sprintf(out_string,"spi(%d), rx_data(%d) = %4x\r\n", (int)j, (int)i, (unsigned int)spi_data[j][i]);	print(out_string);
-		}
-	}
+//	for(j=0; j<4; j++){
+//		for(i=2; i<8; i++){
+//			sprintf(out_string,"spi(%d), rx_data(%d) = %4x\r\n", (int)j, (int)i, (unsigned int)spi_data[j][i]);	print(out_string);
+//		}
+//	}
 
 //	// Let's try to read the device codes from the SPI flash.
 //	rx_data = spi_scan(6, 0x9f000000);
