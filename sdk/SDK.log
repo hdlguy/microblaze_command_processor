@@ -41,3 +41,207 @@ java.lang.RuntimeException: Error creating session
 	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
 17:17:50 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+08:24:41 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+08:24:42 INFO  : XSDB server has started successfully.
+08:24:46 INFO  : SDK has detected change in the last modified timestamps for source hardware specification file Source:1441894178000,  Project:1441840297000
+08:24:46 INFO  : Project top_hw_platform_0's source hardware specification located at /home/pedro/proj/microblaze_command_processor/sdk/top.hdf is now different from the local copy.
+		 The local copy will be replaced with the source specification and your workspace will be updated.
+08:24:54 INFO  : Copied contents of /home/pedro/proj/microblaze_command_processor/sdk/top.hdf into /top_hw_platform_0/system.hdf.
+08:24:54 INFO  : Synchronizing projects in the workspace with the hardware platform specification changes.
+08:24:55 INFO  : 
+08:24:55 INFO  : Updating hardware inferred compiler options for hello1.
+08:24:55 INFO  : Clearing existing target manager status.
+08:26:23 INFO  : Processor reset is completed for microblaze_0
+08:26:24 ERROR : Unexpected error while launching program.
+java.lang.RuntimeException: Error creating session
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.debugApplication(XilinxAppLaunchConfigurationDelegate.java:778)
+	at com.xilinx.sdk.debug.core.XilinxAppLaunchConfigurationDelegate.launch(XilinxAppLaunchConfigurationDelegate.java:298)
+	at com.xilinx.sdk.debug.ui.XilinxAppLaunchDelegateWrapper.launch(XilinxAppLaunchDelegateWrapper.java:31)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:858)
+	at org.eclipse.debug.internal.core.LaunchConfiguration.launch(LaunchConfiguration.java:707)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin.buildAndLaunch(DebugUIPlugin.java:1018)
+	at org.eclipse.debug.internal.ui.DebugUIPlugin$8.run(DebugUIPlugin.java:1222)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+08:28:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+08:28:17 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+08:28:17 INFO  : 'fpga -state' command is executed.
+08:28:17 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+08:28:17 INFO  : Context for processor 'microblaze_0' is selected.
+08:28:17 INFO  : Processor reset is completed for 'microblaze_0'.
+08:28:17 INFO  : Context for processor 'microblaze_0' is selected.
+08:28:18 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/hello1/Debug/hello1.elf' is downloaded to processor 'microblaze_0'.
+08:28:18 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/hello1/Debug/hello1.elf
+----------------End of Script----------------
+
+08:28:18 INFO  : Context for processor 'microblaze_0' is selected.
+08:28:18 INFO  : 'con' command is executed.
+08:28:18 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+08:42:49 INFO  : Disconnected from the channel tcfchan#1.
+08:42:49 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+08:42:58 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+08:42:59 INFO  : XSDB server has started successfully.
+09:05:36 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+09:05:37 INFO  : XSDB server has started successfully.
+09:23:57 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:23:58 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+09:23:58 INFO  : 'fpga -state' command is executed.
+09:23:58 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:23:58 INFO  : Context for processor 'microblaze_0' is selected.
+09:23:58 INFO  : Processor reset is completed for 'microblaze_0'.
+09:23:58 INFO  : Context for processor 'microblaze_0' is selected.
+09:23:58 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/test2/Debug/test2.elf' is downloaded to processor 'microblaze_0'.
+09:23:58 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/test2/Debug/test2.elf
+----------------End of Script----------------
+
+09:23:59 INFO  : Context for processor 'microblaze_0' is selected.
+09:23:59 INFO  : 'con' command is executed.
+09:23:59 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+09:25:07 INFO  : Disconnected from the channel tcfchan#1.
+09:25:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:25:08 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+09:25:08 INFO  : 'fpga -state' command is executed.
+09:25:08 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:25:09 INFO  : Context for processor 'microblaze_0' is selected.
+09:25:09 INFO  : Processor reset is completed for 'microblaze_0'.
+09:25:09 INFO  : Context for processor 'microblaze_0' is selected.
+09:25:09 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/hello1/Debug/hello1.elf' is downloaded to processor 'microblaze_0'.
+09:25:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/hello1/Debug/hello1.elf
+----------------End of Script----------------
+
+09:25:09 INFO  : Context for processor 'microblaze_0' is selected.
+09:25:09 INFO  : 'con' command is executed.
+09:25:09 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+09:27:44 INFO  : Disconnected from the channel tcfchan#2.
+09:27:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:27:45 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+09:27:45 INFO  : 'fpga -state' command is executed.
+09:27:45 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:27:45 INFO  : Context for processor 'microblaze_0' is selected.
+09:27:45 INFO  : Processor reset is completed for 'microblaze_0'.
+09:27:46 INFO  : Context for processor 'microblaze_0' is selected.
+09:27:46 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/test3/Debug/test3.elf' is downloaded to processor 'microblaze_0'.
+09:27:46 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/test3/Debug/test3.elf
+----------------End of Script----------------
+
+09:27:46 INFO  : Context for processor 'microblaze_0' is selected.
+09:27:46 INFO  : 'con' command is executed.
+09:27:46 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+09:28:02 INFO  : Disconnected from the channel tcfchan#3.
+09:28:02 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+09:28:42 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+09:28:43 INFO  : XSDB server has started successfully.
+09:29:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:29:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+09:29:27 INFO  : 'fpga -state' command is executed.
+09:29:27 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:29:27 INFO  : Context for processor 'microblaze_0' is selected.
+09:29:27 INFO  : Processor reset is completed for 'microblaze_0'.
+09:29:28 INFO  : Context for processor 'microblaze_0' is selected.
+09:29:29 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/test3/Debug/test3.elf' is downloaded to processor 'microblaze_0'.
+09:29:29 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/test3/Debug/test3.elf
+----------------End of Script----------------
+
+09:29:29 INFO  : Context for processor 'microblaze_0' is selected.
+09:29:29 INFO  : 'con' command is executed.
+09:29:29 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+09:32:21 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:32:21 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+09:32:22 INFO  : 'fpga -state' command is executed.
+09:32:22 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:32:22 INFO  : Context for processor 'microblaze_0' is selected.
+09:32:22 INFO  : Processor reset is completed for 'microblaze_0'.
+09:32:22 INFO  : Context for processor 'microblaze_0' is selected.
+09:32:23 INFO  : The application '/home/pedro/proj/microblaze_command_processor/sdk/command_proc/Debug/command_proc.elf' is downloaded to processor 'microblaze_0'.
+09:32:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+rst -processor
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+dow /home/pedro/proj/microblaze_command_processor/sdk/command_proc/Debug/command_proc.elf
+----------------End of Script----------------
+
+09:32:23 INFO  : Context for processor 'microblaze_0' is selected.
+09:32:23 INFO  : 'con' command is executed.
+09:32:23 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "microblaze*#0" && jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067"} -index 0
+con
+----------------End of Script----------------
+
+09:34:08 INFO  : Disconnected from the channel tcfchan#1.
+09:34:08 WARN  : channel "tcfchan#1" closed
+09:34:08 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+09:34:49 INFO  : Launching XSDB server: xsdb -n -s /opt/Xilinx/SDK/2015.2/scripts/xsdb/xsdb/xsdb-server.tcl
+09:34:50 INFO  : XSDB server has started successfully.
+09:36:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:36:23 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+09:36:23 INFO  : 'fpga -state' command is executed.
+09:36:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:36:23 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+09:36:48 INFO  : Disconnected from the channel tcfchan#1.
+09:36:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:36:48 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+09:36:48 INFO  : 'fpga -state' command is executed.
+09:36:48 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:36:48 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+09:39:14 INFO  : Disconnected from the channel tcfchan#2.
+09:39:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:39:14 INFO  : 'targets -set -filter {jtag_cable_name =~ "Digilent JTAG-SMT2 210251989067" && level==0} -index 0' command is executed.
+09:39:14 INFO  : 'fpga -state' command is executed.
+09:39:14 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+09:39:14 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+09:44:59 INFO  : Disconnected from the channel tcfchan#3.
+09:44:59 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 

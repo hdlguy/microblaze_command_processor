@@ -1,12 +1,39 @@
-17:15:11 **** Incremental Build of configuration Debug for project hello1 ****
+09:41:02 **** Incremental Build of configuration Debug for project spi_test ****
 make all 
 make: Nothing to be done for `all'.
-17:15:49 **** Incremental Build of configuration Debug for project hello1 ****
+09:41:21 **** Auto Build of configuration Debug for project spi_test ****
 make all 
-make: Nothing to be done for `all'.
-17:16:08 **** Incremental Build of configuration Debug for project hello1 ****
+Building file: ../src/spi_test.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
+Finished building: ../src/spi_test.c
+ 
+Building target: spi_test.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: spi_test.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size spi_test.elf  |tee "spi_test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   3660	    288	   2164	   6112	   17e0	spi_test.elf
+Finished building: spi_test.elf.size
+ 
+09:41:38 **** Auto Build of configuration Debug for project spi_test ****
 make all 
-make: Nothing to be done for `all'.
-17:17:17 **** Incremental Build of configuration Debug for project hello1 ****
-make all 
-make: Nothing to be done for `all'.
+Building file: ../src/spi_test.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/spi_test.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/spi_test.d" -MT"src/spi_test.d" -o "src/spi_test.o" "../src/spi_test.c"
+Finished building: ../src/spi_test.c
+ 
+Building target: spi_test.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "spi_test.elf"  ./src/platform.o ./src/spi_test.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: spi_test.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size spi_test.elf  |tee "spi_test.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+   3660	    288	   2164	   6112	   17e0	spi_test.elf
+Finished building: spi_test.elf.size
+ 

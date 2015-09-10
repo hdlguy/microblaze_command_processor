@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>hello1</name>
+	<name>command_proc</name>
 	<comment>Created by SDK v2015.2. standalone_bsp_0 - microblaze_0</comment>
 	<projects>
 		<project>standalone_bsp_0</project>

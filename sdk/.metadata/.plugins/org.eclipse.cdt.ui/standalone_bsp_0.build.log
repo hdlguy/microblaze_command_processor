@@ -1,4 +1,4 @@
-17:13:58 **** Build of project standalone_bsp_0 ****
+08:43:00 **** Auto Build of project standalone_bsp_0 ****
 make -k all 
 Running Make include in microblaze_0/libsrc/bram_v4_0/src
 make -C microblaze_0/libsrc/bram_v4_0/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
@@ -15,7 +15,6 @@ make -C microblaze_0/libsrc/uartlite_v3_0/src -s include  "SHELL=/bin/sh" "COMPI
 Running Make libs in microblaze_0/libsrc/bram_v4_0/src
 make -C microblaze_0/libsrc/bram_v4_0/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
 Compiling bram
-mb-ar: creating ../../../lib/libxil.a
 Running Make libs in microblaze_0/libsrc/cpu_v2_3/src
 make -C microblaze_0/libsrc/cpu_v2_3/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ARCHIVER=mb-ar" "COMPILER_FLAGS= -O2 -c -mcpu=v9.5 -mlittle-endian -mxl-soft-mul" "EXTRA_COMPILER_FLAGS=-g"
 Compiling cpu
@@ -33,5 +32,5 @@ make -C microblaze_0/libsrc/uartlite_v3_0/src -s libs  "SHELL=/bin/sh" "COMPILER
 Compiling uartlite
 Finished building libraries
 
-17:13:59 Build Finished (took 962ms)
+08:43:01 Build Finished (took 1s.69ms)
 
