@@ -8,7 +8,7 @@
 #define UARTLITE_BASEADDR	   XPAR_UARTLITE_0_BASEADDR
 #define TEST_BUFFER_SIZE 100
 
-typedef enum {reg_wr, reg_rd, spi_wr, spi_rd, nop} command_t;
+typedef enum {reg_wr, reg_rd, spi_wr, spi_rd, led_wr, nop} command_t;
 
 char SendBuffer[TEST_BUFFER_SIZE]; /* Buffer for Transmitting Data */
 char RecvBuffer[TEST_BUFFER_SIZE]; /* Buffer for Receiving Data */
@@ -24,8 +24,6 @@ void parse_command(char *command_string, command_t *cmd, int *cmd_args)
 	*command = '\0';
 	cmd_args[0] = cmd_args[1] = cmd_args[2] = cmd_args[3] = 0;
 	sscanf(command_string, "%s %x %x %x %x", command, &(cmd_args[0]), &(cmd_args[1]), &(cmd_args[2]), &(cmd_args[3]) );
-	//sprintf(output_string, "command = %s %d %d %d %d\n\r", command, cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
-	//print(output_string);
 
 	if (strcmp("reg_wr",command)==0){
 		*cmd = reg_wr;
@@ -35,6 +33,8 @@ void parse_command(char *command_string, command_t *cmd, int *cmd_args)
 		*cmd = spi_wr;
 	} else if (strcmp("spi_rd",command)==0){
 		*cmd = spi_rd;
+	} else if (strcmp("led_wr",command)==0){
+		*cmd = led_wr;
 	} else {
 		*cmd = nop;
 	}
@@ -58,7 +58,7 @@ int main(void)
 	Index = 0;
 	for(;;){
 		char_temp = XUartLite_RecvByte(uart_ptr);  // this waits until there is a character available.
-    	*gpio_ptr = char_temp;  // write character to LED's.
+    	//*gpio_ptr = char_temp;  // write character to LED's.
 		RecvBuffer[Index] = char_temp;
 		if (Index==(TEST_BUFFER_SIZE-1)) Index = 0; else Index++;
 		if (char_temp=='\r'){ // carriage return detected
@@ -75,6 +75,9 @@ int main(void)
 				sprintf(output_string, "command = spi_wr, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
 			} else if (cmd==spi_rd) {
 				sprintf(output_string, "command = spi_rd, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
+			} else if (cmd==led_wr) {
+				sprintf(output_string, "command = led_wr, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
+				*gpio_ptr = cmd_args[0];
 			} else {
 				sprintf(output_string, "command = nop, args = %d %d %d %d\n\r", cmd_args[0], cmd_args[1], cmd_args[2], cmd_args[3]);
 			}

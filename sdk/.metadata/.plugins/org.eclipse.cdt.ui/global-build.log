@@ -37,3 +37,120 @@ mb-size spi_test.elf  |tee "spi_test.elf.size"
    3660	    288	   2164	   6112	   17e0	spi_test.elf
 Finished building: spi_test.elf.size
  
+10:15:50 **** Auto Build of configuration Debug for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 124820	   1596	   2392	 128808	  1f728	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+10:16:13 **** Auto Build of configuration Debug for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 124820	   1596	   2392	 128808	  1f728	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+10:16:45 **** Auto Build of configuration Debug for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 124876	   1596	   2392	 128864	  1f760	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+10:17:45 **** Auto Build of configuration Debug for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 124980	   1596	   2392	 128968	  1f7c8	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+10:18:19 **** Incremental Build of configuration Debug for project command_proc ****
+make all 
+make: Nothing to be done for `all'.
+10:21:37 **** Auto Build of configuration Debug for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 124996	   1596	   2392	 128984	  1f7d8	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+10:21:44 **** Incremental Build of configuration Debug for project command_proc ****
+make all 
+make: Nothing to be done for `all'.
+10:26:29 **** Auto Build of configuration Debug for project command_proc ****
+make all 
+Building file: ../src/command_proc.c
+Invoking: MicroBlaze gcc compiler
+mb-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/command_proc.o" -I../../standalone_bsp_0/microblaze_0/include -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -MMD -MP -MF"src/command_proc.d" -MT"src/command_proc.d" -o "src/command_proc.o" "../src/command_proc.c"
+Finished building: ../src/command_proc.c
+ 
+Building target: command_proc.elf
+Invoking: MicroBlaze gcc linker
+mb-gcc -Wl,-T -Wl,../src/lscript.ld -L../../standalone_bsp_0/microblaze_0/lib -mlittle-endian -mcpu=v9.5 -mxl-soft-mul -Wl,--no-relax -o "command_proc.elf"  ./src/command_proc.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: command_proc.elf
+ 
+Invoking: MicroBlaze Print Size
+mb-size command_proc.elf  |tee "command_proc.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+ 124972	   1596	   2392	 128960	  1f7c0	command_proc.elf
+Finished building: command_proc.elf.size
+ 
+10:26:35 **** Incremental Build of configuration Debug for project command_proc ****
+make all 
+make: Nothing to be done for `all'.
