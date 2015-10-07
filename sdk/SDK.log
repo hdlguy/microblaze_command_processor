@@ -505,3 +505,7 @@ con
 
 15:05:23 INFO  : Disconnected from the channel tcfchan#3.
 15:05:23 ERROR : Unexpected error while parsing XMD response ￿: com.google.gson.JsonSyntaxException: com.google.gson.stream.MalformedJsonException: invalid number or unquoted string near 
+19:03:45 INFO  : Launching XSDB server: xsdb -n /opt/Xilinx/SDK/2015.3/scripts/xsdb/xsdb/xsdb-server.tcl
+19:03:46 INFO  : XSDB server has started successfully.
+06:51:33 INFO  : Launching XSDB server: xsdb -s /opt/Xilinx/SDK/2014.4/scripts/xsdb/xsdb/xsdb-server.tcl 2450
+06:52:58 ERROR : The Hardware Project referenced by this BSP (standalone_bsp_0) was not found in this workspace. As a result, this BSP will not build properly. To fix this error, please import the associated hardware project or recreate a new BSP targeting an existing hardware platform.
