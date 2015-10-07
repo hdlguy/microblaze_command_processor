@@ -4,9 +4,10 @@
 #set_property mark_debug true [get_nets [list usb_uart_txd_OBUF]]
 #set_property mark_debug true [get_nets [list usb_uart_rxd_IBUF]]
 
+set_property mark_debug true [get_nets [list spi0_csn_OBUF spi0_sck_OBUF spi0_sdi]]
 
-set_property mark_debug true [get_nets [list system_i/axi_quad_spi_0/U0/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/LOGIC_FOR_MD_0_GEN.SPI_MODULE_I/D_0]]
-set_property mark_debug true [get_nets [list system_i/axi_quad_spi_1/U0/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/LOGIC_FOR_MD_0_GEN.SPI_MODULE_I/D_0]]
+#set_property mark_debug true [get_nets [list system_i/axi_quad_spi_0/U0/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/LOGIC_FOR_MD_0_GEN.SPI_MODULE_I/D_0]]
+#set_property mark_debug true [get_nets [list system_i/axi_quad_spi_1/U0/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/LOGIC_FOR_MD_0_GEN.SPI_MODULE_I/D_0]]
 
 #
 create_debug_core ila1 ila
