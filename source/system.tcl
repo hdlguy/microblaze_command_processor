@@ -7,15 +7,25 @@
 # IP Integrator Tcl commands easier.
 ################################################################
 
+namespace eval _tcl {
+proc get_script_folder {} {
+   set script_path [file normalize [info script]]
+   set script_folder [file dirname $script_path]
+   return $script_folder
+}
+}
+variable script_folder
+set script_folder [_tcl::get_script_folder]
+
 ################################################################
 # Check if script is running in correct Vivado version.
 ################################################################
-set scripts_vivado_version 2015.3
+set scripts_vivado_version 2018.1
 set current_vivado_version [version -short]
 
 if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
    puts ""
-   puts "ERROR: This script was generated using Vivado <$scripts_vivado_version> and is being run in <$current_vivado_version> of Vivado. Please run the script in Vivado <$scripts_vivado_version> then open the design in Vivado <$current_vivado_version>. Upgrade the design by running \"Tools => Report => Report IP Status...\", then run write_bd_tcl to create an updated script."
+   catch {common::send_msg_id "BD_TCL-109" "ERROR" "This script was generated using Vivado <$scripts_vivado_version> and is being run in <$current_vivado_version> of Vivado. Please run the script in Vivado <$scripts_vivado_version> then open the design in Vivado <$current_vivado_version>. Upgrade the design by running \"Tools => Report => Report IP Status...\", then run write_bd_tcl to create an updated script."}
 
    return 1
 }
@@ -27,19 +37,18 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 # To test this script, run the following commands from Vivado Tcl console:
 # source system_script.tcl
 
-# If you do not already have a project created,
-# you can create a project using the following command:
-#    create_project project_1 myproj -part xc7a50tftg256-1
+# If there is no project opened, this script will create a
+# project, but make sure you do not have an existing project
+# <./myproj/project_1.xpr> in the current working folder.
 
-# CHECKING IF PROJECT EXISTS
-if { [get_projects -quiet] eq "" } {
-   puts "ERROR: Please open or create a project!"
-   return 1
+set list_projs [get_projects -quiet]
+if { $list_projs eq "" } {
+   create_project project_1 myproj -part xc7a50tftg256-1
 }
 
 
-
 # CHANGE DESIGN NAME HERE
+variable design_name
 set design_name system
 
 # If you do not already have an existing IP Integrator design open,
@@ -57,7 +66,7 @@ if { ${design_name} eq "" } {
    # USE CASES:
    #    1) Design_name not set
 
-   set errMsg "ERROR: Please set the variable <design_name> to a non-empty value."
+   set errMsg "Please set the variable <design_name> to a non-empty value."
    set nRet 1
 
 } elseif { ${cur_design} ne "" && ${list_cells} eq "" } {
@@ -67,23 +76,23 @@ if { ${design_name} eq "" } {
    #    4): Current design opened AND is empty AND names diff; design_name exists in project.
 
    if { $cur_design ne $design_name } {
-      puts "INFO: Changing value of <design_name> from <$design_name> to <$cur_design> since current design is empty."
+      common::send_msg_id "BD_TCL-001" "INFO" "Changing value of <design_name> from <$design_name> to <$cur_design> since current design is empty."
       set design_name [get_property NAME $cur_design]
    }
-   puts "INFO: Constructing design in IPI design <$cur_design>..."
+   common::send_msg_id "BD_TCL-002" "INFO" "Constructing design in IPI design <$cur_design>..."
 
 } elseif { ${cur_design} ne "" && $list_cells ne "" && $cur_design eq $design_name } {
    # USE CASES:
    #    5) Current design opened AND has components AND same names.
 
-   set errMsg "ERROR: Design <$design_name> already exists in your project, please set the variable <design_name> to another value."
+   set errMsg "Design <$design_name> already exists in your project, please set the variable <design_name> to another value."
    set nRet 1
 } elseif { [get_files -quiet ${design_name}.bd] ne "" } {
    # USE CASES: 
    #    6) Current opened design, has components, but diff names, design_name exists in project.
    #    7) No opened design, design_name exists in project.
 
-   set errMsg "ERROR: Design <$design_name> already exists in your project, please set the variable <design_name> to another value."
+   set errMsg "Design <$design_name> already exists in your project, please set the variable <design_name> to another value."
    set nRet 2
 
 } else {
@@ -91,20 +100,61 @@ if { ${design_name} eq "" } {
    #    8) No opened design, design_name not in project.
    #    9) Current opened design, has components, but diff names, design_name not in project.
 
-   puts "INFO: Currently there is no design <$design_name> in project, so creating one..."
+   common::send_msg_id "BD_TCL-003" "INFO" "Currently there is no design <$design_name> in project, so creating one..."
 
    create_bd_design $design_name
 
-   puts "INFO: Making design <$design_name> as current_bd_design."
+   common::send_msg_id "BD_TCL-004" "INFO" "Making design <$design_name> as current_bd_design."
    current_bd_design $design_name
 
 }
 
-puts "INFO: Currently the variable <design_name> is equal to \"$design_name\"."
+common::send_msg_id "BD_TCL-005" "INFO" "Currently the variable <design_name> is equal to \"$design_name\"."
 
 if { $nRet != 0 } {
-   puts $errMsg
+   catch {common::send_msg_id "BD_TCL-114" "ERROR" $errMsg}
    return $nRet
+}
+
+set bCheckIPsPassed 1
+##################################################################
+# CHECK IPs
+##################################################################
+set bCheckIPs 1
+if { $bCheckIPs == 1 } {
+   set list_check_ips "\ 
+xilinx.com:ip:axi_gpio:2.0\
+xilinx.com:ip:axi_quad_spi:3.2\
+xilinx.com:ip:axi_uartlite:2.0\
+xilinx.com:ip:clk_wiz:6.0\
+xilinx.com:ip:mdm:3.2\
+xilinx.com:ip:microblaze:10.0\
+xilinx.com:ip:proc_sys_reset:5.0\
+xilinx.com:ip:lmb_bram_if_cntlr:4.0\
+xilinx.com:ip:lmb_v10:3.0\
+xilinx.com:ip:blk_mem_gen:8.4\
+"
+
+   set list_ips_missing ""
+   common::send_msg_id "BD_TCL-006" "INFO" "Checking if the following IPs exist in the project's IP catalog: $list_check_ips ."
+
+   foreach ip_vlnv $list_check_ips {
+      set ip_obj [get_ipdefs -all $ip_vlnv]
+      if { $ip_obj eq "" } {
+         lappend list_ips_missing $ip_vlnv
+      }
+   }
+
+   if { $list_ips_missing ne "" } {
+      catch {common::send_msg_id "BD_TCL-115" "ERROR" "The following IPs are not found in the IP Catalog:\n  $list_ips_missing\n\nResolution: Please add the repository containing the IP(s) to the project." }
+      set bCheckIPsPassed 0
+   }
+
+}
+
+if { $bCheckIPsPassed != 1 } {
+  common::send_msg_id "BD_TCL-1003" "WARNING" "Will not continue with creation of design due to the error(s) above."
+  return 3
 }
 
 ##################################################################
@@ -115,22 +165,24 @@ if { $nRet != 0 } {
 # Hierarchical cell: microblaze_0_local_memory
 proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
 
+  variable script_folder
+
   if { $parentCell eq "" || $nameHier eq "" } {
-     puts "ERROR: create_hier_cell_microblaze_0_local_memory() - Empty argument(s)!"
+     catch {common::send_msg_id "BD_TCL-102" "ERROR" "create_hier_cell_microblaze_0_local_memory() - Empty argument(s)!"}
      return
   }
 
   # Get object for parentCell
   set parentObj [get_bd_cells $parentCell]
   if { $parentObj == "" } {
-     puts "ERROR: Unable to find parent cell <$parentCell>!"
+     catch {common::send_msg_id "BD_TCL-100" "ERROR" "Unable to find parent cell <$parentCell>!"}
      return
   }
 
   # Make sure parentObj is hier blk
   set parentType [get_property TYPE $parentObj]
   if { $parentType ne "hier" } {
-     puts "ERROR: Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."
+     catch {common::send_msg_id "BD_TCL-101" "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
      return
   }
 
@@ -155,7 +207,7 @@ proc create_hier_cell_microblaze_0_local_memory { parentCell nameHier } {
   # Create instance: dlmb_bram_if_cntlr, and set properties
   set dlmb_bram_if_cntlr [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 dlmb_bram_if_cntlr ]
   set_property -dict [ list \
-CONFIG.C_ECC {0} \
+   CONFIG.C_ECC {0} \
  ] $dlmb_bram_if_cntlr
 
   # Create instance: dlmb_v10, and set properties
@@ -164,17 +216,17 @@ CONFIG.C_ECC {0} \
   # Create instance: ilmb_bram_if_cntlr, and set properties
   set ilmb_bram_if_cntlr [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_bram_if_cntlr:4.0 ilmb_bram_if_cntlr ]
   set_property -dict [ list \
-CONFIG.C_ECC {0} \
+   CONFIG.C_ECC {0} \
  ] $ilmb_bram_if_cntlr
 
   # Create instance: ilmb_v10, and set properties
   set ilmb_v10 [ create_bd_cell -type ip -vlnv xilinx.com:ip:lmb_v10:3.0 ilmb_v10 ]
 
   # Create instance: lmb_bram, and set properties
-  set lmb_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.3 lmb_bram ]
+  set lmb_bram [ create_bd_cell -type ip -vlnv xilinx.com:ip:blk_mem_gen:8.4 lmb_bram ]
   set_property -dict [ list \
-CONFIG.Memory_Type {True_Dual_Port_RAM} \
-CONFIG.use_bram_block {BRAM_Controller} \
+   CONFIG.Memory_Type {True_Dual_Port_RAM} \
+   CONFIG.use_bram_block {BRAM_Controller} \
  ] $lmb_bram
 
   # Create interface connections
@@ -198,6 +250,9 @@ CONFIG.use_bram_block {BRAM_Controller} \
 # procedure reusable. If parentCell is "", will use root.
 proc create_root_design { parentCell } {
 
+  variable script_folder
+  variable design_name
+
   if { $parentCell eq "" } {
      set parentCell [get_bd_cells /]
   }
@@ -205,14 +260,14 @@ proc create_root_design { parentCell } {
   # Get object for parentCell
   set parentObj [get_bd_cells $parentCell]
   if { $parentObj == "" } {
-     puts "ERROR: Unable to find parent cell <$parentCell>!"
+     catch {common::send_msg_id "BD_TCL-100" "ERROR" "Unable to find parent cell <$parentCell>!"}
      return
   }
 
   # Make sure parentObj is hier blk
   set parentType [get_property TYPE $parentObj]
   if { $parentType ne "hier" } {
-     puts "ERROR: Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."
+     catch {common::send_msg_id "BD_TCL-101" "ERROR" "Parent <$parentObj> has TYPE = <$parentType>. Expected to be <hier>."}
      return
   }
 
@@ -238,75 +293,75 @@ proc create_root_design { parentCell } {
   set spi1_sdo [ create_bd_port -dir O spi1_sdo ]
   set sys_clk [ create_bd_port -dir I -type clk sys_clk ]
   set_property -dict [ list \
-CONFIG.FREQ_HZ {200000000} \
-CONFIG.PHASE {0.000} \
+   CONFIG.FREQ_HZ {200000000} \
+   CONFIG.PHASE {0.000} \
  ] $sys_clk
   set sys_rst [ create_bd_port -dir I -type rst sys_rst ]
   set_property -dict [ list \
-CONFIG.POLARITY {ACTIVE_HIGH} \
+   CONFIG.POLARITY {ACTIVE_HIGH} \
  ] $sys_rst
 
   # Create instance: axi_gpio_0, and set properties
   set axi_gpio_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_gpio:2.0 axi_gpio_0 ]
   set_property -dict [ list \
-CONFIG.C_ALL_OUTPUTS {1} \
-CONFIG.C_GPIO_WIDTH {8} \
+   CONFIG.C_ALL_OUTPUTS {1} \
+   CONFIG.C_GPIO_WIDTH {8} \
  ] $axi_gpio_0
 
   # Create instance: axi_quad_spi_0, and set properties
   set axi_quad_spi_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 axi_quad_spi_0 ]
   set_property -dict [ list \
-CONFIG.C_NUM_TRANSFER_BITS {16} \
-CONFIG.C_USE_STARTUP {0} \
-CONFIG.Multiples16 {1} \
+   CONFIG.C_NUM_TRANSFER_BITS {16} \
+   CONFIG.C_USE_STARTUP {0} \
+   CONFIG.Multiples16 {1} \
  ] $axi_quad_spi_0
 
   # Create instance: axi_quad_spi_1, and set properties
   set axi_quad_spi_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_quad_spi:3.2 axi_quad_spi_1 ]
   set_property -dict [ list \
-CONFIG.C_NUM_SS_BITS {4} \
-CONFIG.C_NUM_TRANSFER_BITS {32} \
-CONFIG.C_USE_STARTUP {0} \
-CONFIG.Multiples16 {1} \
+   CONFIG.C_NUM_SS_BITS {4} \
+   CONFIG.C_NUM_TRANSFER_BITS {32} \
+   CONFIG.C_USE_STARTUP {0} \
+   CONFIG.Multiples16 {1} \
  ] $axi_quad_spi_1
 
   # Create instance: axi_uartlite_0, and set properties
   set axi_uartlite_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_uartlite:2.0 axi_uartlite_0 ]
   set_property -dict [ list \
-CONFIG.C_BAUDRATE {115200} \
-CONFIG.UARTLITE_BOARD_INTERFACE {Custom} \
-CONFIG.USE_BOARD_FLOW {true} \
+   CONFIG.C_BAUDRATE {115200} \
+   CONFIG.UARTLITE_BOARD_INTERFACE {Custom} \
+   CONFIG.USE_BOARD_FLOW {true} \
  ] $axi_uartlite_0
 
   # Create instance: clk_wiz_1, and set properties
-  set clk_wiz_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:5.2 clk_wiz_1 ]
+  set clk_wiz_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:clk_wiz:6.0 clk_wiz_1 ]
   set_property -dict [ list \
-CONFIG.CLKIN1_JITTER_PS {50.0} \
-CONFIG.CLKOUT1_JITTER {112.316} \
-CONFIG.CLKOUT1_PHASE_ERROR {89.971} \
-CONFIG.CLK_IN1_BOARD_INTERFACE {Custom} \
-CONFIG.CLK_IN2_BOARD_INTERFACE {Custom} \
-CONFIG.RESET_BOARD_INTERFACE {Custom} \
-CONFIG.USE_BOARD_FLOW {true} \
+   CONFIG.CLKIN1_JITTER_PS {50.0} \
+   CONFIG.CLKOUT1_JITTER {112.316} \
+   CONFIG.CLKOUT1_PHASE_ERROR {89.971} \
+   CONFIG.CLK_IN1_BOARD_INTERFACE {Custom} \
+   CONFIG.CLK_IN2_BOARD_INTERFACE {Custom} \
+   CONFIG.RESET_BOARD_INTERFACE {Custom} \
+   CONFIG.USE_BOARD_FLOW {true} \
  ] $clk_wiz_1
 
   # Create instance: mdm_1, and set properties
   set mdm_1 [ create_bd_cell -type ip -vlnv xilinx.com:ip:mdm:3.2 mdm_1 ]
 
   # Create instance: microblaze_0, and set properties
-  set microblaze_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:9.5 microblaze_0 ]
+  set microblaze_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:microblaze:10.0 microblaze_0 ]
   set_property -dict [ list \
-CONFIG.C_DEBUG_ENABLED {2} \
-CONFIG.C_D_AXI {1} \
-CONFIG.C_D_LMB {1} \
-CONFIG.C_I_LMB {1} \
-CONFIG.C_NUMBER_OF_PC_BRK {4} \
+   CONFIG.C_DEBUG_ENABLED {2} \
+   CONFIG.C_D_AXI {1} \
+   CONFIG.C_D_LMB {1} \
+   CONFIG.C_I_LMB {1} \
+   CONFIG.C_NUMBER_OF_PC_BRK {4} \
  ] $microblaze_0
 
   # Create instance: microblaze_0_axi_periph, and set properties
   set microblaze_0_axi_periph [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_interconnect:2.1 microblaze_0_axi_periph ]
   set_property -dict [ list \
-CONFIG.NUM_MI {4} \
+   CONFIG.NUM_MI {4} \
  ] $microblaze_0_axi_periph
 
   # Create instance: microblaze_0_local_memory
@@ -315,8 +370,8 @@ CONFIG.NUM_MI {4} \
   # Create instance: rst_clk_wiz_1_100M, and set properties
   set rst_clk_wiz_1_100M [ create_bd_cell -type ip -vlnv xilinx.com:ip:proc_sys_reset:5.0 rst_clk_wiz_1_100M ]
   set_property -dict [ list \
-CONFIG.RESET_BOARD_INTERFACE {Custom} \
-CONFIG.USE_BOARD_FLOW {true} \
+   CONFIG.RESET_BOARD_INTERFACE {Custom} \
+   CONFIG.USE_BOARD_FLOW {true} \
  ] $rst_clk_wiz_1_100M
 
   # Create interface connections
@@ -369,69 +424,13 @@ HDL_ATTRIBUTE.MARK_DEBUG {true} \
   connect_bd_net -net sys_rst_1 [get_bd_ports sys_rst] [get_bd_pins clk_wiz_1/reset] [get_bd_pins rst_clk_wiz_1_100M/ext_reset_in]
 
   # Create address segments
-  create_bd_addr_seg -range 0x10000 -offset 0x40000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] SEG_axi_gpio_0_Reg
-  create_bd_addr_seg -range 0x10000 -offset 0x44A00000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_0/AXI_LITE/Reg] SEG_axi_quad_spi_0_Reg
-  create_bd_addr_seg -range 0x10000 -offset 0x44A10000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_1/AXI_LITE/Reg] SEG_axi_quad_spi_1_Reg
-  create_bd_addr_seg -range 0x10000 -offset 0x40600000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] SEG_axi_uartlite_0_Reg
-  create_bd_addr_seg -range 0x20000 -offset 0x0 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] SEG_dlmb_bram_if_cntlr_Mem
-  create_bd_addr_seg -range 0x20000 -offset 0x0 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] SEG_ilmb_bram_if_cntlr_Mem
+  create_bd_addr_seg -range 0x00010000 -offset 0x40000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_gpio_0/S_AXI/Reg] SEG_axi_gpio_0_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x44A00000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_0/AXI_LITE/Reg] SEG_axi_quad_spi_0_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x44A10000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_quad_spi_1/AXI_LITE/Reg] SEG_axi_quad_spi_1_Reg
+  create_bd_addr_seg -range 0x00010000 -offset 0x40600000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs axi_uartlite_0/S_AXI/Reg] SEG_axi_uartlite_0_Reg
+  create_bd_addr_seg -range 0x00020000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Data] [get_bd_addr_segs microblaze_0_local_memory/dlmb_bram_if_cntlr/SLMB/Mem] SEG_dlmb_bram_if_cntlr_Mem
+  create_bd_addr_seg -range 0x00020000 -offset 0x00000000 [get_bd_addr_spaces microblaze_0/Instruction] [get_bd_addr_segs microblaze_0_local_memory/ilmb_bram_if_cntlr/SLMB/Mem] SEG_ilmb_bram_if_cntlr_Mem
 
-  # Perform GUI Layout
-  regenerate_bd_layout -layout_string {
-   guistr: "# # String gsaved with Nlview 6.5.5  2015-06-26 bk=1.3371 VDI=38 GEI=35 GUI=JA:1.8
-#  -string -flagsOSRD
-preplace port spi1_sdi -pg 1 -y 730 -defaultsOSRD
-preplace port uart_rtl -pg 1 -y 390 -defaultsOSRD
-preplace port sys_rst -pg 1 -y 570 -defaultsOSRD
-preplace port spi0_sck -pg 1 -y 250 -defaultsOSRD
-preplace port gpio_rtl -pg 1 -y 70 -defaultsOSRD
-preplace port spi1_sck -pg 1 -y 570 -defaultsOSRD
-preplace port spi0_sdi -pg 1 -y 380 -defaultsOSRD
-preplace port sys_clk -pg 1 -y 550 -defaultsOSRD
-preplace port spi1_sdo -pg 1 -y 530 -defaultsOSRD
-preplace port spi0_sdo -pg 1 -y 210 -defaultsOSRD
-preplace portBus spi1_csn -pg 1 -y 590 -defaultsOSRD
-preplace portBus spi0_csn -pg 1 -y 270 -defaultsOSRD
-preplace inst axi_quad_spi_1 -pg 1 -lvl 5 -y 560 -defaultsOSRD
-preplace inst microblaze_0_axi_periph -pg 1 -lvl 4 -y 200 -defaultsOSRD
-preplace inst axi_gpio_0 -pg 1 -lvl 5 -y 70 -defaultsOSRD
-preplace inst mdm_1 -pg 1 -lvl 2 -y 480 -defaultsOSRD
-preplace inst microblaze_0 -pg 1 -lvl 3 -y 480 -defaultsOSRD
-preplace inst axi_uartlite_0 -pg 1 -lvl 5 -y 400 -defaultsOSRD
-preplace inst rst_clk_wiz_1_100M -pg 1 -lvl 2 -y 640 -defaultsOSRD
-preplace inst clk_wiz_1 -pg 1 -lvl 1 -y 560 -defaultsOSRD
-preplace inst microblaze_0_local_memory -pg 1 -lvl 4 -y 490 -defaultsOSRD
-preplace inst axi_quad_spi_0 -pg 1 -lvl 5 -y 240 -defaultsOSRD
-preplace netloc sys_rst_1 1 0 2 40 620 N
-preplace netloc io1_i_1 1 0 6 NJ 380 NJ 380 NJ 380 NJ 380 NJ 660 1690
-preplace netloc io1_i_2 1 0 6 NJ 730 NJ 740 NJ 740 NJ 740 NJ 740 1680
-preplace netloc axi_quad_spi_1_sck_o 1 5 1 NJ
-preplace netloc axi_quad_spi_0_ss_o 1 5 1 NJ
-preplace netloc microblaze_0_Clk 1 1 4 210 550 570 390 1090 10 1440
-preplace netloc microblaze_0_axi_periph_M03_AXI 1 4 1 1400
-preplace netloc sys_clk_1 1 0 1 NJ
-preplace netloc microblaze_0_ilmb_1 1 3 1 N
-preplace netloc microblaze_0_axi_periph_M00_AXI 1 4 1 1430
-preplace netloc microblaze_0_M_AXI_DP 1 3 1 1080
-preplace netloc axi_quad_spi_1_io0_o 1 5 1 NJ
-preplace netloc axi_quad_spi_0_io0_o 1 5 1 NJ
-preplace netloc rst_clk_wiz_1_100M_interconnect_aresetn 1 2 2 NJ 120 N
-preplace netloc rst_clk_wiz_1_100M_bus_struct_reset 1 2 2 NJ 400 1070
-preplace netloc axi_quad_spi_1_ss_o 1 5 1 NJ
-preplace netloc axi_quad_spi_0_sck_o 1 5 1 NJ
-preplace netloc microblaze_0_axi_periph_M01_AXI 1 4 1 1420
-preplace netloc rst_clk_wiz_1_100M_peripheral_aresetn 1 2 3 NJ 320 1070 20 1410
-preplace netloc rst_clk_wiz_1_100M_mb_reset 1 2 1 610
-preplace netloc clk_wiz_1_locked 1 1 1 200
-preplace netloc axi_uartlite_0_UART 1 5 1 NJ
-preplace netloc axi_gpio_0_GPIO 1 5 1 NJ
-preplace netloc microblaze_0_dlmb_1 1 3 1 N
-preplace netloc microblaze_0_axi_periph_M02_AXI 1 4 1 N
-preplace netloc microblaze_0_debug 1 2 1 N
-preplace netloc mdm_1_debug_sys_rst 1 1 2 210 730 560
-levelinfo -pg 1 0 120 390 840 1240 1560 1710 -top 0 -bot 750
-",
-}
 
   # Restore current instance
   current_bd_instance $oldCurInst
