@@ -20,7 +20,7 @@ update_ip_catalog
 source ../source/system.tcl
 generate_target {synthesis implementation} [get_files ./proj.srcs/sources_1/bd/system/system.bd]
 set_property synth_checkpoint_mode None    [get_files ./proj.srcs/sources_1/bd/system/system.bd]
-write_hwdef -force  -file ../sdk/top.hdf
+write_hwdef -force  -file ./results/top.hdf
 
 
 # add the max_rx_if_fifo
