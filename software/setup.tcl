@@ -7,7 +7,6 @@ set hwspec ../implement/results/top.hdf
 set bsp "standalone_bsp_0"
 set proc "microblaze_0"
 set os "standalone"
-#set application "hello1"
 
 file delete -force $sdk_dir/.metadata
 file delete -force $sdk_dir/$hwproject
@@ -26,8 +25,8 @@ regenbsp -bsp $bsp
 
 # Create new application projects as Empty Application 
 # Note that previously created source files will not be overwritten.
-createapp -name "hello1"            -app {Empty Application} -proc $proc -hwproject $hwproject -bsp $bsp -os $os
-createapp -name "command_processor" -app {Empty Application} -proc $proc -hwproject $hwproject -bsp $bsp -os $os
+createapp -name "hello1"       -app {Empty Application} -proc $proc -hwproject $hwproject -bsp $bsp -os $os
+createapp -name "command_proc" -app {Empty Application} -proc $proc -hwproject $hwproject -bsp $bsp -os $os
 
 # Clean and build all projects
 projects -clean
