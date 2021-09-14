@@ -38,9 +38,9 @@ read_vhdl [glob ../source/top.vhd]
 read_xdc ../source/top.xdc
 
 # This associates the SDC elf output with the microblaze processor.
-add_files -norecurse ../sdk/command_proc/Release/command_proc.elf
-set_property SCOPED_TO_REF system [get_files -all -of_objects [get_fileset sources_1] {../sdk/command_proc/Release/command_proc.elf}]
-set_property SCOPED_TO_CELLS { microblaze_0 } [get_files -all -of_objects [get_fileset sources_1] {../sdk/command_proc/Release/command_proc.elf}]
+#add_files -norecurse ../sdk/command_proc/Release/command_proc.elf
+#set_property SCOPED_TO_REF system [get_files -all -of_objects [get_fileset sources_1] {../sdk/command_proc/Release/command_proc.elf}]
+#set_property SCOPED_TO_CELLS { microblaze_0 } [get_files -all -of_objects [get_fileset sources_1] {../sdk/command_proc/Release/command_proc.elf}]
 
 close_project
 
