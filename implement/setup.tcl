@@ -1,6 +1,8 @@
 # This script sets up a Vivado project with all ip references resolved.
 file delete -force proj.xpr *.os *.jou *.log proj.srcs proj.cache proj.runs
 #
+#create_project -force proj 
+#set_property board_part numato.com:neso:part0:1.0 [current_project]
 create_project -part xc7a50t-ftg256-1 -force proj 
 set_property target_language VHDL [current_project]
 set_property default_lib work [current_project]
