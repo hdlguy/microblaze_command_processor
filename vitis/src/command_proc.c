@@ -21,6 +21,7 @@ void parse_command(char *command_string, command_t *cmd, int *cmd_args)
 	char command[100];
 	//char output_string[100];
 
+
 	*command = '\0';
 	cmd_args[0] = cmd_args[1] = cmd_args[2] = cmd_args[3] = 0;
 	sscanf(command_string, "%s %x %x %x %x", command, &(cmd_args[0]), &(cmd_args[1]), &(cmd_args[2]), &(cmd_args[3]) );
